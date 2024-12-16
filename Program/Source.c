@@ -7,6 +7,8 @@
 #define RIGHT 77
 #define DOWN 80
 
+
+
 void Position(int x, int y)
 {
 	//x축과 y축을 설정
