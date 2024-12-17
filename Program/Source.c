@@ -1,147 +1,68 @@
 #include <stdio.h>
-#include <conio.h>
 #include <windows.h>
-
-#define UP 72
-#define LEFT 75
-#define RIGHT 77
-#define DOWN 80
-
-int sreenIndex;
-HANDLE sreen[2];
-
-void Initialize()
+enum State
 {
-	CONSOLE_CURSOR_INFO cursor;
+	IDLE,
+	ATTACK,
+	DIE
 
-	//화면 버터를 2개 생성합니다.
-	sreen[0] = CreateConsoleScreenBuffer
-	(
-		GENERIC_READ | GENERIC_WRITE,
-		0,
-		NULL,
-		CONSOLE_TEXTMODE_BUFFER,
-		NULL
-	);
-
-	sreen[1] = CreateConsoleScreenBuffer
-	(
-		GENERIC_READ | GENERIC_WRITE,
-		0,
-		NULL,
-		CONSOLE_TEXTMODE_BUFFER,
-		NULL
-	);
-
-	cursor.dwSize = 1;
-	cursor.bVisible = FALSE;
-
-	SetConsoleCursorInfo(sreen[0], &cursor);
-	SetConsoleCursorInfo(sreen[1], &cursor);
-
-}
-
-void Flip()
-{
-	SetConsoleActiveScreenBuffer(sreen[sreenIndex]);
-
-	sreenIndex = !sreenIndex;
-	
-}
-
-void Clear()
-{
-	COORD position = { 0,0 };
-
-	DWORD dword;
-
-	CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
-
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	GetConsoleScreenBufferInfo(handle, &consoleInfo);
-
-	int Width = consoleInfo.srWindow.Right - consoleInfo.srWindow.Left + 1;
-	int Height = consoleInfo.srWindow.Bottom - consoleInfo.srWindow.Top + 1;
-
-	FillConsoleOutputCharacter(sreen[sreenIndex], ' ', Width * Height, position, &dword);
+	// 열거형은 
+	// 열거형에서 중간에 있는 상수의 값을 변경하게되면
+	// 그다음에 있는 상수의 값이 변경된 값에서 부터 1씩 증가합니다.
+};
 
 
-}
-
-void Position(int x, int y)
-{
-	//x축과 y축을 설정
-	COORD position = {x, y};
-
-
-	// 커서 위치를 이동하는 함수
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
-}
 
 int main()
 {
-	char key = 0; // up : 72 left : 75 right : 77 down : 80
+#pragma region 열거형
+	// 고유한 상수 값에 연결된 기호 이름의
+	// 집합입니다.
 
-	int x = 0;
-	int y = 0;
+	// enum State state = IDLE;
+	// 
+	//  switch (state)
+	//  {
+	//  case IDLE: printf("대기상태\n");
+	//  	break;
+	//  case ATTACK: printf("공격상태\n");
+	//  	break;
+	//  case DIE: printf("죽음상태\n");
+	//  	break;
+	//  default: printf("알수없습니다.\n");
+	//  	break;
+	//  }
 	
-	CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
-
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	GetConsoleScreenBufferInfo(handle, &consoleInfo);
+#pragma endregion
 
 
+#pragma region 색상
+	    // 0 BLACK
+		// 1 DARK BLUE
+		// 2 DARK GREEN
+		// 3 DARK SKY BLUE
+		// 4 DARK RED
+		// 5 DARK PURPLE
+		// 6 DARK YELLOW
+		// 7 GRAY
+		// 8 DARK GRAY
+		// 9 BLUE
+		// 10 GREEN
+		// 11 SKY BLUE
+		// 12 RED
+		// 13 PURPLE
+		// 14 YELLOW
+		// 15 WHITE
 
-	// printf("%d\n", consoleInfo.srWindow.Right);
-
-	while (1)
-	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
 		
-		Position(x, y);
-		
-		printf("★");
 
-		if (_kbhit)
-		{
-			key = _getch();
-
-	    if (key == -32)
-	    {
-	    	key = _getch();
-	    }
-
-		switch (key)
-		{
-
-		case UP: if(y > 0) y--;
-			//printf("↑\n"); 
-			break;
-		case LEFT: if(x > 0) x -= 2;
-			//printf("←\n"); 
-			break;
-		case RIGHT: if(consoleInfo.srWindow.Right - 1 >x)x += 2;
-			//printf("→\n"); 
-			break;
-		case DOWN: if(consoleInfo.srWindow.Bottom > y)y ++;
-			//printf("↓\n"); 
-			break;
-		default: printf("Exception\n");
-			break;
-
-		}
-		
-		}
-
-	  system("cls");
-
-	}
+	printf("BLACK\n",);
 
 
-	
 
-	
+#pragma endregion
+
 
 	return 0;
 }
