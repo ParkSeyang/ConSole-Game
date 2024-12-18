@@ -1,99 +1,93 @@
-#include <stdio.h>
-#include <windows.h>
-enum State
-{
-	IDLE,
-	ATTACK,
-	DIE
+#include<stdio.h>
+#define WITDH 10
+#define HEIGHT 10
 
-	// 열거형 상수에서 목록 첫 상수의 기본값은 0이고, 다음부터 1씩 
-	// 증가하는 방식으로 상수값이 자동으로 부여된다.
-	
-	// 열거형에서 중간에 있는 상수의 값을 변경하게되면
-	// 그다음에 있는 상수의 값이 변경된 값에서 부터 1씩 증가합니다.
+char maze[WITDH][HEIGHT] =
+{
+	{'1','0','1','1','1','1','1','1','1','1' },
+	{'1','0','0','0','0','0','0','0','0','1' },
+	{'1','0','1','1','1','0','1','1','1','1' },
+	{'1','1','1','1','0','0','1','0','0','0' },
+	{'1','1','0','0','0','1','1','0','1','1' },
+	{'1','1','0','1','1','1','1','0','1','1' },
+	{'1','1','0','1','1','1','1','0','1','1' },
+	{'1','0','0','0','0','0','0','0','1','1' },
+	{'1','0','1','1','1','1','1','1','1','1' },
+	{'1','1','1','1','1','1','1','1','1','1' },
+
 };
 
-enum Color
+void Render()
 {
-	BLACK,
-	DARKBLUE,
-	DARKGREEN,
-	DARKSKYBLUE,
-	DARKRED,
-	DARKPURPLE,
-	DARKYELLOW,
-	GRAY,
-	DARKGRAY,
-	BLUE,
-	GREEN,
-	SKYBLUE,
-	RED,
-	PURPLE,
-	YELLOW,
-	WHITE
+	
+	for (int i = 0; i < WITDH; i++)
+	{
+		for (int j = 0; j < HEIGHT; j++)
+		{
+			if (maze[i][j] == 1)
+			{
+				printf("■");
+			}
+			else
+			{
+				printf("  ");
+			}
+		
+	
 
-} COLOR;
+		}
+		
+		printf("\n");
+	
+	}
+	
+}
+
 
 int main()
 {
-#pragma region 열거형 상수
-	// 고유한 상수 값에 연결된 기호 이름의
-	// 집합입니다.
+#pragma region (2)차원 배열
+	// 배열의 요소로 또 다른 배열을 가리는 배열입니다.
 
-	// 열거형 상수는 키워드 enum을 사용하여 정수형 상수 목록 집합을 정의하는 자료형이다
-	// enum 이후에 열거형 태그명을 적고, 중괄호를 사용해 열거형 정수 상수 목록을 쉼표로 분리하여 적는다
-	// 정의된 열거형 상수는 새로운 자료형으로 사용할 수도 있다
-
-	// enum State state = IDLE;
+	// int array2D[3][3]=
+	// {
+	// 	{1,2,3},
+	// 	{4,5,6},
+	// 	{7,8,9},
+	// };
 	// 
-	//  switch (state)
-	//  {
-	//  case IDLE: printf("대기상태\n");
-	//  	break;
-	//  case ATTACK: printf("공격상태\n");
-	//  	break;
-	//  case DIE: printf("죽음상태\n");
-	//  	break;
-	//  default: printf("알수없습니다.\n");
-	//  	break;
-	//  }
-	
-#pragma endregion
+	// 
+	// for (int i = 0; i<3; i++)
+	// {
+	// 	for (int j = 0; j < 3; j++)
+	// 	{
+	// 		printf("%d", array2D[i][j]);
+	// 	}
+	// 
+	// 	printf("\n");
+	// }
 
+	// while (array2D[0][0])
+	// {
+	// 	printf("2차원배열\n", array2D[0][0]);
+	// 	if (array2D[1][1])
+	// 	{
+	// 		printf("행과열 1,1로 이동\n", array2D[1][1]);
+	// 	}
+	// }
+	// for (i=0;i<10;i++)
+	// {
+	// 
+	// 
+	// }
 
-#pragma region 색상
-	    // 0 BLACK
-		// 1 DARK BLUE
-		// 2 DARK GREEN
-		// 3 DARK SKY BLUE
-		// 4 DARK RED
-		// 5 DARK PURPLE
-		// 6 DARK YELLOW
-		// 7 GRAY
-		// 8 DARK GRAY
-		// 9 BLUE
-		// 10 GREEN
-		// 11 SKY BLUE
-		// 12 RED
-		// 13 PURPLE
-		// 14 YELLOW
-		// 15 WHITE
-
-		// SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
-	int i;
-	
-	for (i=0; i < 15; i++)
-	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), i);
-
-		printf("빨주노초파남보\n");
-	}
-	
-
-
+	// 2차원 배열은 행과 열로 구분되며 앞에 있는 배열은
+	// 열을 의미하고, 뒤에 있는 배열은 행을 의미합니다.
 
 #pragma endregion
 
+	
+	Render();
 
 	return 0;
 }
