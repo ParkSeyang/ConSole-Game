@@ -13,7 +13,26 @@ enum State
 	// 그다음에 있는 상수의 값이 변경된 값에서 부터 1씩 증가합니다.
 };
 
+enum Color
+{
+	BLACK,
+	DARKBLUE,
+	DARKGREEN,
+	DARKSKYBLUE,
+	DARKRED,
+	DARKPURPLE,
+	DARKYELLOW,
+	GRAY,
+	DARKGRAY,
+	BLUE,
+	GREEN,
+	SKYBLUE,
+	RED,
+	PURPLE,
+	YELLOW,
+	WHITE
 
+} COLOR;
 
 int main()
 {
@@ -60,10 +79,16 @@ int main()
 		// 14 YELLOW
 		// 15 WHITE
 
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
-		
+		// SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0);
+	int i;
+	
+	for (i=0; i < 15; i++)
+	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), i);
 
-	printf("BLACK\n",);
+		printf("빨주노초파남보\n");
+	}
+	
 
 
 
