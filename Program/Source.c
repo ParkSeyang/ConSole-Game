@@ -24,13 +24,13 @@ void Render()
 	{
 		for (int j = 0; j < HEIGHT; j++)
 		{
-			if (maze[i][j] == 1)
+			if (maze[i][j] == '0')
+			{
+			    printf("  ");
+			}
+			else if (maze[i][j]=='1')
 			{
 				printf("бс");
-			}
-			else
-			{
-				printf("  ");
 			}
 		
 	
