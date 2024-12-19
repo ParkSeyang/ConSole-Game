@@ -1,93 +1,76 @@
 #include<stdio.h>
-#define WITDH 10
-#define HEIGHT 10
+#define SIZE 10000
 
-char maze[WITDH][HEIGHT] =
+
+void Load(const char* fileName)
 {
-	{'1','0','1','1','1','1','1','1','1','1' },
-	{'1','0','0','0','0','0','0','0','0','1' },
-	{'1','0','1','1','1','0','1','1','1','1' },
-	{'1','1','1','1','0','0','1','0','0','0' },
-	{'1','1','0','0','0','1','1','0','1','1' },
-	{'1','1','0','1','1','1','1','0','1','1' },
-	{'1','1','0','1','1','1','1','0','1','1' },
-	{'1','0','0','0','0','0','0','0','1','1' },
-	{'1','0','1','1','1','1','1','1','1','1' },
-	{'1','1','1','1','1','1','1','1','1','1' },
+	// ex) 함수로 만들경우
+	// "r" read : 파일을 읽기위해 사용하는 모드입니다.
+	FILE* file = fopen(fileName, "r");
 
-};
+	char buffer[SIZE] = { 0, };
 
-void Render()
-{
-	
-	for (int i = 0; i < WITDH; i++)
-	{
-		for (int j = 0; j < HEIGHT; j++)
-		{
-			if (maze[i][j] == '0')
-			{
-			    printf("  ");
-			}
-			else if (maze[i][j]=='1')
-			{
-				printf("■");
-			}
-		
-	
+	fread(buffer, 1, SIZE, file);
 
-		}
-		
-		printf("\n");
-	
-	}
-	
+	printf("%s", buffer);
+
+	fclose(file);
+
 }
 
 
 int main()
 {
-#pragma region (2)차원 배열
-	// 배열의 요소로 또 다른 배열을 가리는 배열입니다.
+#pragma region 파일 쓰기
 
-	// int array2D[3][3]=
-	// {
-	// 	{1,2,3},
-	// 	{4,5,6},
-	// 	{7,8,9},
-	// };
+	//"w" write : 파일 쓰기 모드로 진행합니다.
+	// FILE* file = fopen("data.txt", "w");
+	// 
+	// fputs("Character Name\n", file);
+	// 
+	// fputs("Health 100 \n", file);
+	// fputs("Level 15 \n", file);
+	// 
+	//  Health
+	//  Level 을 저장시켜라
 	// 
 	// 
-	// for (int i = 0; i<3; i++)
-	// {
-	// 	for (int j = 0; j < 3; j++)
-	// 	{
-	// 		printf("%d", array2D[i][j]);
-	// 	}
-	// 
-	// 	printf("\n");
-	// }
+	// fclose(file);
 
-	// while (array2D[0][0])
-	// {
-	// 	printf("2차원배열\n", array2D[0][0]);
-	// 	if (array2D[1][1])
-	// 	{
-	// 		printf("행과열 1,1로 이동\n", array2D[1][1]);
-	// 	}
-	// }
-	// for (i=0;i<10;i++)
-	// {
-	// 
-	// 
-	// }
 
-	// 2차원 배열은 행과 열로 구분되며 앞에 있는 배열은
-	// 열을 의미하고, 뒤에 있는 배열은 행을 의미합니다.
 
 #pragma endregion
 
+#pragma region 파일 읽기
+	// "r" read : 파일을 읽기위해 사용하는 모드입니다.
+	// FILE* file = fopen("data.txt", "r");
+	// 
+	// char buffer[SIZE] = { 0, };
+	// 
+	//  첫 번째 매개변수 는 읽은 데이터를 저장할 메모리 버퍼의 포인터 변수입니다.
+	//  두 번째 매개변수 는 각 데이터 항목의 크기입니다.
+	//  세 번째 매개변수 는 데이터를 읽어올 데이터 항목의 수 입니다.
+	//  네 번쨰 매개변수 는 데이터를 읽어올 파일의 포인터 변수 입니다.
+	// 
+	// 
+	// fread(buffer, 1, SIZE, file);
+	// 
+	// printf("%s", buffer);
+	// 
+	// fclose(file);
+	// 
+	//  읽는 파일에 내용을 추가할경우 파일 인코딩 형식에 따라서 
+	//  글자가 깨지거나 오류가 날수있다.
+	// 그럴경우 해당파일경로를열어 파일을 다른이름으로 
+	// 저장창을 열어서 해당 인코딩 형식을 수정 하면 출력이된다.
+
 	
-	Render();
+
+	Load("data.txt");
+	Load("unit.TXT");
+
+#pragma endregion
+
 
 	return 0;
 }

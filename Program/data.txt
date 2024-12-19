@@ -1,0 +1,4 @@
+Character Name
+Health 100 
+Level 15
+가오가이
