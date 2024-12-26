@@ -1,0 +1,4 @@
+﻿  Source.c
+C:\Users\ghlwk_sc7hq61\OneDrive\Desktop\ConSole-Game\Program\Source.c(24,60): error C2440: '함수': 'CONSOLE_CURSOR_INFO *'에서 'COORD'(으)로 변환할 수 없습니다.
+C:\Users\ghlwk_sc7hq61\OneDrive\Desktop\ConSole-Game\Program\Source.c(24,60): warning C4024: 'SetConsoleCursorPosition': 형식 및 실제 매개 변수 2의 형식이 서로 다릅니다.
+C:\Users\ghlwk_sc7hq61\OneDrive\Desktop\ConSole-Game\Program\Source.c(36,1): error C2143: 구문 오류: ';'이(가) '}' 앞에 없습니다.

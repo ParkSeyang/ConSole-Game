@@ -6,7 +6,7 @@
  #define LEFT 75
  #define RIGHT 77
  #define DOWN 80
- 
+
  #define WIDTH 80
  #define HEIGHT 25
     
